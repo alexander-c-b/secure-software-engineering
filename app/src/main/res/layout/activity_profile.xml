@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Profile">
+
+    <ImageButton
+        android:id="@+id/profPicButton"
+        android:layout_width="170dp"
+        android:layout_height="173dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="132dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/profile" />
+
+    <TextView
+        android:id="@+id/playerStats"
+        android:layout_width="191dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="165dp"
+        android:layout_marginEnd="28dp"
+        android:text="Name of Player goes here"
+        android:textSize="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/backButtonProfile"
+        android:layout_width="102dp"
+        android:layout_height="107dp"
+        android:layout_marginStart="154dp"
+        android:layout_marginEnd="155dp"
+        android:layout_marginBottom="33dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/back" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
