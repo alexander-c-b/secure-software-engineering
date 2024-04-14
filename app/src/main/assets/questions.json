@@ -9,5 +9,16 @@
     ],
     "correctAnswerIndex": 0,
     "answerFeedback": "The incident should be reported to your organization's security division so that they can deal with a potential intruder or social engineering scenario with no risk to yourself."
+  },
+  {
+    "questionText": "What is the best practice for managing passwords?",
+    "answers": [
+      "Use the same password for all accounts",
+      "Write down passwords and keep them in a safe place",
+      "Share passwords with trusted friends",
+      "Use a password manager"
+    ],
+    "correctAnswerIndex": 3,
+    "answerFeedback": "Using a password manager is generally considered the best practice for managing passwords. It allows you to use complex, unique passwords for each of your accounts without needing to remember them all."
   }
 ]
