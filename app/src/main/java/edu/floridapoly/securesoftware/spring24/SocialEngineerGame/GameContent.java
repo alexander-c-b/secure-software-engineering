@@ -12,9 +12,8 @@ public class GameContent {
 
 
     // Load a random question from JSON file
-    public GameContent(String jsonData) throws IOException {
-        JsonEncoder encoder = new JsonEncoder();
-        questions = encoder.loadQuestionDataString(jsonData); // Load the questions
+    public GameContent(List<Question> questions) {
+        this.questions = questions;
         random = new Random();
         shuffleQuestions();
     }

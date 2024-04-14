@@ -1,0 +1,13 @@
+[
+  {
+    "questionText": "What should you do if you see a non-employee typing commands into your co-worker's computer?",
+    "answers": [
+      "Report the incident to security",
+      "Sneak up behind the person",
+      "Follow the person on their way out",
+      "Call the police immediately"
+    ],
+    "correctAnswerIndex": 0,
+    "answerFeedback": "The incident should be reported to your organization's security division so that they can deal with a potential intruder or social engineering scenario with no risk to yourself."
+  }
+]
