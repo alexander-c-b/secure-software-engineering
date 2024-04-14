@@ -12,6 +12,7 @@ public class Game extends AppCompatActivity {
     private ImageButton backButton;
     private ImageButton gameProfButton;
     private Button gameButton;
+    private GameRoundControl gameRoundControl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +37,24 @@ public class Game extends AppCompatActivity {
             }
         });
 
+
+
         gameButton = (Button) findViewById(R.id.playGameButton);
         gameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent playGame = new Intent(Game.this, Play.class);
                 startActivity(playGame);
+                startGame();
             }
+
         });
+    }
+    private void startGame() {
+        // Example of getting a new question and starting the game logic
+        Question question = gameRoundControl.getNextQuestion();
+        // Now display this question on your UI and wait for the user to answer
+        // After the user answers, you can call gameRoundControl.tryAnswer(answerIndex)
+        // to check if the answer is correct and get feedback.
     }
 }
