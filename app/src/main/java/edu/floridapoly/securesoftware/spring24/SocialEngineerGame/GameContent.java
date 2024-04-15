@@ -9,11 +9,12 @@ import java.util.Random;
 public class GameContent {
     private List<Question> questions;
     private Random random; // Random object to select a random question
-
+    private List<Question> askedQuestions;
 
     // Load a random question from JSON file
     public GameContent(List<Question> questions) {
-        this.questions = questions;
+        this.questions = questions; // Keep original list
+        this.askedQuestions = new ArrayList<>();
         random = new Random();
         shuffleQuestions();
     }
