@@ -24,12 +24,21 @@ public class GameContent {
         if (questions.isEmpty()) {
             return null; // Return null or throw an exception if there are no questions
         }
-        return questions.get(random.nextInt(questions.size()));
+        Question question = questions.remove(0); // Always take the first question after shuffling
+        askedQuestions.add(question); // Keep track of asked questions
+        return question;
     }
 
 
     // Function to shuffle the questions
     private void shuffleQuestions() {
         Collections.shuffle(questions, random);
+    }
+
+    // Reset the game content for new round
+    public void resetRound() {
+        questions.addAll(askedQuestions);
+        askedQuestions.clear();
+        shuffleQuestions();
     }
 }
