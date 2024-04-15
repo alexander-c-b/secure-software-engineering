@@ -22,7 +22,7 @@ public class GameContent {
 
     public Question getNewQuestion() {
         if (questions.isEmpty()) {
-            return null; // Return null or throw an exception if there are no questions
+            return null;
         }
         Question question = questions.remove(0); // Always take the first question after shuffling
         askedQuestions.add(question); // Keep track of asked questions

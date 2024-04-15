@@ -73,12 +73,13 @@ public class Play extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     String feedback = gameRoundControl.tryAnswer(index);
-                    if (feedback.contains("Correct")) {
+                    Toast.makeText(Play.this, feedback, Toast.LENGTH_SHORT).show();
+                    // Update correct answers label only if answer was correct
+                    if (feedback.startsWith("Correct")) {
                         correctAnswersSoFar++;
                         correctAnswersLabel.setText("Correct Answers: " + correctAnswersSoFar);
                     }
-                    Toast.makeText(Play.this, feedback, Toast.LENGTH_SHORT).show();
-                    displayNextQuestion();
+                    displayNextQuestion(); // Move on to the next question
                 }
             });
         }

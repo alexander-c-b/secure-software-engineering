@@ -1,33 +1,49 @@
 package edu.floridapoly.securesoftware.spring24.SocialEngineerGame;
 public class GameRoundControl {
-    private GameContent gameContent;  // Assuming GameContent is already defined
+    private GameContent gameContent;
     private int correctAnswersSoFar;
+    private int questionsAskedSoFar;
+    private Question currentQuestion; // Add this line to store the current question
 
     public GameRoundControl(GameContent gameContent) {
         this.gameContent = gameContent;
         this.correctAnswersSoFar = 0;
+        this.questionsAskedSoFar = 0;
+        this.currentQuestion = null; // Initialize current question as null
     }
 
     public Question getNextQuestion() {
-        // Get the next question from GameContent
-        return gameContent.getNewQuestion();
-    }
-
-    public String tryAnswer(int answerIndex) {
-        Question currentQuestion = getNextQuestion();
-        if (currentQuestion != null && currentQuestion.isAnswerCorrect(answerIndex)) {
-            correctAnswersSoFar++;
-            return currentQuestion.answerFeedback + " Correct!";
-        } else if (currentQuestion != null) {
-            return currentQuestion.answerFeedback + " Incorrect.";
+        if (questionsAskedSoFar < 5) { // Only allow 5 questions per round
+            currentQuestion = gameContent.getNewQuestion(); // Get and store the new question
+            questionsAskedSoFar++;
+            return currentQuestion;
         } else {
-            return "There are no more questions.";
+            return null; // No more questions allowed in this round
         }
     }
 
+    public String tryAnswer(int answerIndex) {
+        if (currentQuestion == null) {
+            return "Please get the question first.";
+        }
+
+        String feedback;
+        if (currentQuestion.isAnswerCorrect(answerIndex)) {
+            correctAnswersSoFar++;
+            feedback = "Correct! " + currentQuestion.answerFeedback;
+        } else {
+            feedback = "Incorrect. " + currentQuestion.answerFeedback;
+        }
+        // Now it's safe to set currentQuestion to null because we're done using it
+        currentQuestion = null;
+        return feedback;
+    }
+
     public PastScore endGame() {
-        // Return a summary of the game, with the total number of questions and the number of correct answers
-        PastScore score = new PastScore();  // Assuming PastScore is a class with a suitable constructor or setters
+        // Return a summary of the game
+        PastScore score = new PastScore();
+        // Set the necessary properties of score based on the game state
+        gameContent.resetRound(); // Prepare for a new round if needed
         return score;
     }
 }
