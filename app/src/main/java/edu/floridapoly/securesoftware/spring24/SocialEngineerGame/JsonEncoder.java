@@ -41,7 +41,7 @@ public class JsonEncoder {
     public List<PastScore> loadPastScores(String username, String passwordHash)
       throws IOException {
         String key = passwordHash + "KEY";
-        String filename = username + "." + passwordHash + ".json";
+        String filename = getFilename(username, passwordHash);
         String data = new Encryptor(context).decrypt(filename, key);
         Moshi moshi = new Moshi.Builder().build();
         Type type = Types.newParameterizedType(List.class, PastScore.class);
@@ -49,16 +49,20 @@ public class JsonEncoder {
         return jsonAdapter.fromJson(data);
     }
 
-    private void savePastScores(
+    private String getFilename(String username, String passwordHash) {
+        return username + "." + passwordHash + ".json";
+    }
+
+    public void savePastScores(
       List<PastScore> pastScores, String username, String passwordHash
     ) throws IOException {
         String key = passwordHash + "KEY";
-        String filename = username + "." + passwordHash + ".json";
+        String filename = getFilename(username, passwordHash);
         Moshi moshi = new Moshi.Builder().build();
         Type type = Types.newParameterizedType(List.class, PastScore.class);
         JsonAdapter<List<PastScore>> jsonAdapter = moshi.adapter(type);
         String data = jsonAdapter.toJson(pastScores);
-        new Encryptor(context).encrypt(filename, data, key);
+        new Encryptor(context).encrypt(data, key, filename);
     }
 
     public void savePastScore(PastScore pastScore, String username, String passwordHash)
