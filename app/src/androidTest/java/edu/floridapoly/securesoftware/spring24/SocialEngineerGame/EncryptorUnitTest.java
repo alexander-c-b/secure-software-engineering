@@ -3,27 +3,21 @@ package edu.floridapoly.securesoftware.spring24.SocialEngineerGame;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 import android.content.Context;
 
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.rules.TemporaryFolder;
 
 import java.io.IOException;
 
 public class EncryptorUnitTest {
-    @BeforeClass
-    public static void setup() throws IOException {
-        TemporaryFolder folder = new TemporaryFolder();
-        folder.create();
-        context = mock(Context.class);
-        when(context.getFilesDir()).thenReturn(folder.getRoot());
-    }
+    private Context context;
 
-    private static Context context;
+    @Before
+    public void setup() {
+        context = Util.getTargetContext();
+    }
 
     @Test
     public void encryptString_returnsChangedNonEmptyString() {
@@ -48,7 +42,7 @@ public class EncryptorUnitTest {
     @Test
     public void encrypt_encryptsFile() throws IOException {
         Encryptor encryptor = new Encryptor(context);
-        String filePath = "test_file.txt";
+        String filePath = "test.txt";
         String password = "my test password";
         String data = "my test data";
         encryptor.encrypt(data, password, filePath);

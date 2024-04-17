@@ -35,6 +35,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("org.jasypt:jasypt:1.9.3")
     implementation("com.squareup.moshi:moshi:1.15.1")
+    implementation("org.apache.commons:commons-lang3:3.14.0")
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.mockito:mockito-core:5.11.0")
     testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
