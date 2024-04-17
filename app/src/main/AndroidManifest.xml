@@ -16,7 +16,7 @@
             android:name=".Play"
             android:exported="false" />
         <activity
-            android:name=".CreateAccount"
+            android:name=".Authenticator"
             android:exported="false" />
         <activity
             android:name=".Game"
