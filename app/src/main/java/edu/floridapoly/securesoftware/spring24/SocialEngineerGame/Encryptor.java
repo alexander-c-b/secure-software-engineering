@@ -2,6 +2,9 @@ package edu.floridapoly.securesoftware.spring24.SocialEngineerGame;
 
 import android.content.Context;
 
+import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
+import org.jasypt.encryption.pbe.config.PBEConfig;
+import org.jasypt.encryption.pbe.config.SimplePBEConfig;
 import org.jasypt.util.text.StrongTextEncryptor;
 
 import java.io.IOException;
@@ -29,14 +32,17 @@ public class Encryptor {
     }
 
     public static String encryptString(String data, String password) {
-        StrongTextEncryptor textEncryptor = new StrongTextEncryptor();
-        textEncryptor.setPassword(password);
-        return textEncryptor.encrypt(data);
+        return getEncryptor(password).encrypt(data);
     }
 
     public static String decryptString(String encrypted, String password) {
-        StrongTextEncryptor textEncryptor = new StrongTextEncryptor();
-        textEncryptor.setPassword(password);
-        return textEncryptor.decrypt(encrypted);
+        return getEncryptor(password).decrypt(encrypted);
+    }
+
+    private static StandardPBEStringEncryptor getEncryptor(String password) {
+        StandardPBEStringEncryptor stringEncryptor = new StandardPBEStringEncryptor();
+        stringEncryptor.setAlgorithm("PBEWithMD5AndDES");
+        stringEncryptor.setPassword(password);
+        return stringEncryptor;
     }
 }
