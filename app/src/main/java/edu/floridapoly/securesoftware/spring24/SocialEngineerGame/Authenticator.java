@@ -31,6 +31,7 @@ public class Authenticator extends AppCompatActivity {
     private EditText enterUser;
     private EditText enterPass;
     private Button createButton;
+    private JsonEncoder jsonEncoder;
     private Map<String, String> userDatabase = new HashMap<>();
 
     @Override
@@ -41,6 +42,7 @@ public class Authenticator extends AppCompatActivity {
         enterUser = findViewById(R.id.EnterUser);
         enterPass = findViewById(R.id.EnterPass);
         createButton = findViewById(R.id.createB);
+        jsonEncoder = new JsonEncoder(this);
 
         loadUserDatabase();
 
@@ -80,6 +82,12 @@ public class Authenticator extends AppCompatActivity {
         userDatabase.put(username, hashedPassword);
         saveUserDatabase();
         showToast("Account created successfully.");
+
+        try {
+            jsonEncoder.initializePastScores(username, hashedPassword);
+        } catch (IOException e) {
+            showToast("Failed to initialize past scores.");
+        }
 
         startActivity(new Intent(Authenticator.this, MainActivity.class));
     }

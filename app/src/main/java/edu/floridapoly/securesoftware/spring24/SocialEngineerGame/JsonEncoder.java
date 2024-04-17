@@ -49,7 +49,6 @@ public class JsonEncoder {
         return jsonAdapter.fromJson(data);
     }
 
-    /////////////// TRY TO LOGIN USE THIS BECAUSE IF THE USER AND PASS DOES NOT EXISTS THIS WOULD SHOW ////////////////////////
     public List<PastScore> loadPastScores(String username, String passwordHash)
       throws IOException {
         String key = passwordHash + "KEY";

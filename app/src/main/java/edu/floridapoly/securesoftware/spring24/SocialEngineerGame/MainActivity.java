@@ -2,7 +2,6 @@ package edu.floridapoly.securesoftware.spring24.SocialEngineerGame;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Base64;
@@ -13,15 +12,14 @@ import android.widget.Toast;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 import com.squareup.moshi.Types;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-
 import okio.BufferedSource;
 import okio.Okio;
 
@@ -32,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private Button logButton;
     private Button createButton;
     private Map<String, String> userDatabase = new HashMap<>();
+    private JsonEncoder jsonEncoder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +41,14 @@ public class MainActivity extends AppCompatActivity {
         passwordInput = (EditText) findViewById(R.id.textPassword);
         logButton = (Button) findViewById(R.id.loginButton);
         createButton = (Button) findViewById(R.id.cButton);
+        jsonEncoder = new JsonEncoder(this);
 
         loadUserDatabase();
 
         logButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                attemptLogin();
+                Login();
             }
         });
 
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void attemptLogin() {
+    private void Login() {
         String username = usernameInput.getText().toString().trim();
         String password = passwordInput.getText().toString().trim();
 
@@ -82,6 +82,17 @@ public class MainActivity extends AppCompatActivity {
             showToast("Username or password is incorrect.");
             return;
         }
+
+        // Loading past scores using JsonEncoder
+        try {
+            List<PastScore> scores = jsonEncoder.loadPastScores(username, storedHash);
+        } catch (Exception e) {
+            showToast("Failed to load past scores." + e.getMessage());
+        }
+
+        // Saving user info in User class
+        User.saveUserInfo(username, storedHash);
+
         Intent intent = new Intent(MainActivity.this, Game.class);
         startActivity(intent);
     }
