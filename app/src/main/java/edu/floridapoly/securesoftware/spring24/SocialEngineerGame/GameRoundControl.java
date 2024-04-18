@@ -1,4 +1,7 @@
 package edu.floridapoly.securesoftware.spring24.SocialEngineerGame;
+
+import java.io.IOException;
+
 public class GameRoundControl {
     private GameContent gameContent;
     private int correctAnswersSoFar;
@@ -13,13 +16,13 @@ public class GameRoundControl {
     }
 
     public Question getNextQuestion() {
-        if (questionsAskedSoFar < 5) { // Only allow 5 questions per round
-            currentQuestion = gameContent.getNewQuestion(); // Get and store the new question
-            questionsAskedSoFar++;
-            return currentQuestion;
-        } else {
-            return null; // No more questions allowed in this round
+        if (questionsAskedSoFar >= 5) { // Game should end after 5 questions
+            endGame();
+            return null;
         }
+        currentQuestion = gameContent.getNewQuestion(); // Get and store the new question
+        questionsAskedSoFar++;
+        return currentQuestion;
     }
 
     public String tryAnswer(int answerIndex) {
@@ -39,11 +42,31 @@ public class GameRoundControl {
         return feedback;
     }
 
-    public PastScore endGame() {
+    /*public PastScore endGame() {
         // Return a summary of the game
-        PastScore score = new PastScore();
+        PastScore score = new PastScore(5,correctAnswersSoFar);
         // Set the necessary properties of score based on the game state
         gameContent.resetRound(); // Prepare for a new round if needed
         return score;
     }
+     */
+    public void endGame() {
+        // Return a summary of the game
+        PastScore score = new PastScore(5, correctAnswersSoFar);
+
+        // Call savePastScores() here to save the score
+        try {
+            JsonEncoder jsonEncoder = new JsonEncoder(App.getContext()); // App.getContext() needs to be your actual context getter method
+            jsonEncoder.savePastScore(score, User.getUsername(), User.getPasswordHash());
+        } catch (IOException e) {
+            // Handle any IO Exceptions here
+            e.printStackTrace();
+        }
+        // Reset the game round control for a new game
+        gameContent.resetRound();
+        correctAnswersSoFar = 0;
+        questionsAskedSoFar = 0;
+        currentQuestion = null;
+    }
+
 }
