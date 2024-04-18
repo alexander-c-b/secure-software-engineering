@@ -1,5 +1,8 @@
 package edu.floridapoly.securesoftware.spring24.SocialEngineerGame;
 
+import android.content.Intent;
+import android.widget.Toast;
+
 import java.io.IOException;
 
 public class GameRoundControl {
@@ -55,11 +58,17 @@ public class GameRoundControl {
             // Handle any IO Exceptions here
             e.printStackTrace();
         }
+        Toast.makeText(App.getContext(), "You got " + correctAnswersSoFar + " out of 5 questions correct.", Toast.LENGTH_SHORT).show();
         // Reset the game round control for a new game
         gameContent.resetRound();
         correctAnswersSoFar = 0;
         questionsAskedSoFar = 0;
         currentQuestion = null;
+
+        // Navigate back to the previous screen
+        Intent intent = new Intent(App.getContext(), Game.class); // Game.class should be the previous screen
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        App.getContext().startActivity(intent);
     }
 
 }
