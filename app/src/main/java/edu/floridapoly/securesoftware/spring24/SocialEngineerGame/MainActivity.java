@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -86,10 +87,11 @@ public class MainActivity extends AppCompatActivity {
         // Loading past scores using JsonEncoder
         try {
             List<PastScore> scores = jsonEncoder.loadPastScores(username, storedHash);
+            // Proceed with using the scores as needed...
         } catch (Exception e) {
-            showToast("Failed to load past scores." + e.getMessage());
+            Log.e("MainActivity", "Exception loading past scores", e);
+            showToast("Failed to load past scores. " + e.toString());
         }
-
         // Saving user info in User class
         User.saveUserInfo(username, storedHash);
 
@@ -122,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
             if (userDatabase == null) userDatabase = new HashMap<>();
         } catch (IOException e) {
             userDatabase = new HashMap<>();
-            showToast("Error in loading data.");
+           // showToast("Error in loading data.");
         }
     }
 
