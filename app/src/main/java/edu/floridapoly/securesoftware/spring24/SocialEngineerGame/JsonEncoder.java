@@ -2,11 +2,13 @@ package edu.floridapoly.securesoftware.spring24.SocialEngineerGame;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+import android.util.Log;
 
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 import com.squareup.moshi.Types;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
@@ -49,10 +51,17 @@ public class JsonEncoder {
         return jsonAdapter.fromJson(data);
     }
 
-    public List<PastScore> loadPastScores(String username, String passwordHash)
-      throws IOException {
+    public List<PastScore> loadPastScores(String username, String passwordHash) throws IOException {
         String key = passwordHash + "KEY";
         String filename = getFilename(username, passwordHash);
+        File file = new File(context.getFilesDir(), filename);
+        if (!file.exists()) {
+            Log.e("JsonEncoder", "File does not exist: " + filename);
+            return new ArrayList<>(); // Return an empty list or handle this case appropriately
+        }
+        else {
+            Log.d("FileAccess", "File exists and ready to be used: " + filename);
+        }
         String data = new Encryptor(context).decrypt(filename, key);
         Moshi moshi = new Moshi.Builder().build();
         Type type = Types.newParameterizedType(List.class, PastScore.class);
@@ -61,20 +70,28 @@ public class JsonEncoder {
     }
 
     private String getFilename(String username, String passwordHash) {
-        return username + "." + passwordHash + ".json";
+        // Sanitize both username and passwordHash to ensure filename is valid
+        String safeUsername = sanitizeFilename(username);
+        String safePasswordHash = sanitizeFilename(passwordHash);
+        return safeUsername + "." + safePasswordHash + ".json";
     }
 
-    public void savePastScores(
-      List<PastScore> pastScores, String username, String passwordHash
-    ) throws IOException {
+    // Make sure file has a valid name
+    private String sanitizeFilename(String filename) {
+        return filename.replaceAll("[^A-Za-z0-9]", "_");
+    }
+
+    public void savePastScores(List<PastScore> pastScores, String username, String passwordHash) throws IOException {
         String key = passwordHash + "KEY";
         String filename = getFilename(username, passwordHash);
         Moshi moshi = new Moshi.Builder().build();
         Type type = Types.newParameterizedType(List.class, PastScore.class);
         JsonAdapter<List<PastScore>> jsonAdapter = moshi.adapter(type);
         String data = jsonAdapter.toJson(pastScores);
+        Log.d("JsonEncoder", "Saving data to: " + filename);
         new Encryptor(context).encrypt(data, key, filename);
     }
+
 
     public void savePastScore(PastScore pastScore, String username, String passwordHash)
       throws IOException {

@@ -42,14 +42,7 @@ public class GameRoundControl {
         return feedback;
     }
 
-    /*public PastScore endGame() {
-        // Return a summary of the game
-        PastScore score = new PastScore(5,correctAnswersSoFar);
-        // Set the necessary properties of score based on the game state
-        gameContent.resetRound(); // Prepare for a new round if needed
-        return score;
-    }
-     */
+
     public void endGame() {
         // Return a summary of the game
         PastScore score = new PastScore(5, correctAnswersSoFar);

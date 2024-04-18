@@ -37,7 +37,7 @@ public class GameFile {
 
     public void saveFile(String contents) throws IOException {
         FileOutputStream outputStream =
-          context.openFileOutput(path, Context.MODE_PRIVATE);
+                context.openFileOutput(path, Context.MODE_PRIVATE);
         outputStream.write(contents.getBytes());
         outputStream.close();
     }
