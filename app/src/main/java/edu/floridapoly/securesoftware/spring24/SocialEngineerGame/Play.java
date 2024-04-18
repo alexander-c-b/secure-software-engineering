@@ -95,7 +95,7 @@ public class Play extends AppCompatActivity {
             answerButton4.setText(currentQuestion.answers.get(3));
         } else {
             // No more questions - end the game or show a summary
-            // You could call gameRoundControl.endGame() here and do something with the result
+            gameRoundControl.endGame();
         }
     }
 
