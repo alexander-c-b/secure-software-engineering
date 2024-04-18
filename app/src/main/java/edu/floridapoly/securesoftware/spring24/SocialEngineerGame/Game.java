@@ -36,6 +36,8 @@ public class Game extends AppCompatActivity {
             }
         });
 
+
+
         gameButton = (Button) findViewById(R.id.playGameButton);
         gameButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,6 +45,8 @@ public class Game extends AppCompatActivity {
                 Intent playGame = new Intent(Game.this, Play.class);
                 startActivity(playGame);
             }
+
         });
     }
+
 }

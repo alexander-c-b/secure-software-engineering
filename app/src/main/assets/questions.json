@@ -1,0 +1,68 @@
+[
+  {
+    "questionText": "What should you do if you see a non-employee typing commands into your co-worker's computer?",
+    "answers": [
+      "Report to security",
+      "Sneak up behind them",
+      "Follow them",
+      "Call the police"
+    ],
+    "correctAnswerIndex": 0,
+    "answerFeedback": "Report to your organization's security division."
+  },
+  {
+    "questionText": "What is the best practice for managing passwords?",
+    "answers": [
+      "Same password everywhere",
+      "Write down passwords",
+      "Share with friends",
+      "Use a password manager"
+    ],
+    "correctAnswerIndex": 3,
+    "answerFeedback": "Use a password manager for secure password management."
+  },
+  {
+    "questionText": "What is a common method used in phishing attacks?",
+    "answers": [
+      "Deceptive emails",
+      "Stealing computers",
+      "Negative online reviews",
+      "Job advertisements"
+    ],
+    "correctAnswerIndex": 0,
+    "answerFeedback": "Phishing often involves deceptive emails."
+  },
+  {
+    "questionText": "What is the purpose of two-factor authentication?",
+    "answers": [
+      "Enhance security",
+      "Easier password recall",
+      "Track user activity",
+      "Share account access"
+    ],
+    "correctAnswerIndex": 0,
+    "answerFeedback": "Two-factor authentication enhances security."
+  },
+  {
+    "questionText": "What is one way to protect sensitive information when using public Wi-Fi?",
+    "answers": [
+      "Use a VPN",
+      "Share Wi-Fi password",
+      "Same Wi-Fi and email password",
+      "Post about Wi-Fi on social media"
+    ],
+    "correctAnswerIndex": 0,
+    "answerFeedback": "Use a VPN for secure browsing on public Wi-Fi."
+  },
+  {
+    "questionText": "What is the primary purpose of encryption?",
+    "answers": [
+      "Faster data transmission",
+      "Protect data",
+      "Recover lost data",
+      "Share data publicly"
+    ],
+    "correctAnswerIndex": 1,
+    "answerFeedback": "Encryption protects data from unauthorized access."
+  }
+]

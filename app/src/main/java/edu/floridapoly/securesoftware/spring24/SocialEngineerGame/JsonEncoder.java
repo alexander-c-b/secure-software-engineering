@@ -1,15 +1,20 @@
 package edu.floridapoly.securesoftware.spring24.SocialEngineerGame;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 import com.squareup.moshi.Types;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+
+import okio.BufferedSource;
+import okio.Okio;
 
 public class JsonEncoder {
     private static final String QUESTIONS_FILE = "questions.json";
@@ -32,10 +37,16 @@ public class JsonEncoder {
     }
 
     public List<Question> loadQuestionData() throws IOException {
+        AssetManager assetManager = context.getAssets();
+        InputStream inputStream = assetManager.open(QUESTIONS_FILE);
+        BufferedSource bufferedSource = Okio.buffer(Okio.source(inputStream));
+        String data = bufferedSource.readUtf8();
+        bufferedSource.close();
+
         Moshi moshi = new Moshi.Builder().build();
         Type type = Types.newParameterizedType(List.class, Question.class);
         JsonAdapter<List<Question>> jsonAdapter = moshi.adapter(type);
-        return jsonAdapter.fromJson(new GameFile(QUESTIONS_FILE, context).readFile());
+        return jsonAdapter.fromJson(data);
     }
 
     public List<PastScore> loadPastScores(String username, String passwordHash)
