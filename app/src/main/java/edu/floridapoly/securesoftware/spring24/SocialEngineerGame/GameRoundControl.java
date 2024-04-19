@@ -21,7 +21,6 @@ public class GameRoundControl {
 
     public Question getNextQuestion() {
         if (questionsAskedSoFar >= 5) { // Game should end after 5 questions
-            endGame();
             return null;
         }
         currentQuestion = gameContent.getNewQuestion(); // Get and store the new question
