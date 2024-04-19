@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 public class Profile extends AppCompatActivity {
@@ -57,6 +58,7 @@ public class Profile extends AppCompatActivity {
 
         try {
             List<PastScore> pastScores = new JsonEncoder().loadPastScores(username, User.getPasswordHash());
+            Collections.reverse(pastScores); // To display most recent at top
             displayPastScores(pastScores);
         } catch (IOException e) {
             e.printStackTrace();
