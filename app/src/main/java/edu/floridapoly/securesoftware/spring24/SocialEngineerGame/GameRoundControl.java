@@ -1,6 +1,7 @@
 package edu.floridapoly.securesoftware.spring24.SocialEngineerGame;
 
 import android.content.Intent;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -20,7 +21,6 @@ public class GameRoundControl {
 
     public Question getNextQuestion() {
         if (questionsAskedSoFar >= 5) { // Game should end after 5 questions
-            endGame();
             return null;
         }
         currentQuestion = gameContent.getNewQuestion(); // Get and store the new question
@@ -54,6 +54,8 @@ public class GameRoundControl {
         try {
             JsonEncoder jsonEncoder = new JsonEncoder(App.getContext()); // App.getContext() needs to be your actual context getter method
             jsonEncoder.savePastScore(score, User.getUsername(), User.getPasswordHash());
+            Log.d("Game", "Final Score: " + score.correctAnswers + "/" + score.totalQuestions);
+
         } catch (IOException e) {
             // Handle any IO Exceptions here
             e.printStackTrace();

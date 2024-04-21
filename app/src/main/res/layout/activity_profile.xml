@@ -1,47 +1,57 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profileLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Profile">
+    android:layout_height="match_parent">
 
-    <ImageButton
-        android:id="@+id/profPicButton"
-        android:layout_width="170dp"
-        android:layout_height="173dp"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="132dp"
-        android:backgroundTint="#00FFFFFF"
-        android:scaleType="fitXY"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/profile" />
+    <!-- Add the ImageButton here -->
 
     <TextView
         android:id="@+id/playerStats"
-        android:layout_width="191dp"
-        android:layout_height="62dp"
-        android:layout_marginTop="165dp"
-        android:layout_marginEnd="28dp"
-        android:text="Name of Player goes here"
-        android:textSize="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="75dp"
+        android:layout_marginBottom="10dp"
+        android:text="Player: "
+        android:textSize="30sp" />
+
+    <ListView
+        android:id="@+id/pastScoresListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/playerStats"
+        android:layout_marginTop="81dp"
+        android:divider="@null"
+        android:dividerHeight="0dp" />
 
     <ImageButton
-        android:id="@+id/backButtonProfile"
-        android:layout_width="102dp"
-        android:layout_height="107dp"
-        android:layout_marginStart="154dp"
-        android:layout_marginEnd="155dp"
-        android:layout_marginBottom="33dp"
+        android:id="@+id/backButtonGame"
+        android:layout_width="106dp"
+        android:layout_height="111dp"
         android:backgroundTint="#00FFFFFF"
+        android:rotation="-90"
         android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         app:srcCompat="@drawable/back" />
 
+    <TextView
+        android:id="@+id/title_pastscores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="300dp"
+        android:text="Past Scores"
+        android:textSize="16sp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

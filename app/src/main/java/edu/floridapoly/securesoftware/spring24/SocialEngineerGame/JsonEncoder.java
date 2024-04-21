@@ -89,6 +89,7 @@ public class JsonEncoder {
         JsonAdapter<List<PastScore>> jsonAdapter = moshi.adapter(type);
         String data = jsonAdapter.toJson(pastScores);
         Log.d("JsonEncoder", "Saving data to: " + filename);
+        Log.d("JsonEncoder", "Saved past score: " + pastScores);
         new Encryptor(context).encrypt(data, key, filename);
     }
 
