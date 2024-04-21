@@ -64,5 +64,336 @@
     ],
     "correctAnswerIndex": 1,
     "answerFeedback": "Encryption protects data from unauthorized access."
+  },
+    {
+      "questionText": "What is the most secure way to store passwords?",
+      "answers": [
+        "In a text file",
+        "On a sticky note",
+        "In your memory",
+        "In a password manager"
+      ],
+      "correctAnswerIndex": 3,
+      "answerFeedback": "Use a password manager."
+    },
+    {
+      "questionText": "What is a firewall used for?",
+      "answers": [
+        "Speeding up internet",
+        "Blocking unauthorized access",
+        "Recovering lost data",
+        "Sharing files"
+      ],
+      "correctAnswerIndex": 1,
+      "answerFeedback": "Firewalls block unauthorized access."
+    },
+    {
+      "questionText": "What does HTTPS stand for?",
+      "answers": [
+        "Hyper Text Transfer Protocol",
+        "Hyper Text Transfer Protocol Secure",
+        "Hyper Transfer Text Protocol",
+        "Hyper Transfer Text Protocol Secure"
+      ],
+      "correctAnswerIndex": 1,
+      "answerFeedback": "HTTPS stands for Hyper Text Transfer Protocol Secure."
+    },
+    {
+      "questionText": "What is the purpose of an antivirus software?",
+      "answers": [
+        "Speed up your computer",
+        "Protect against malware",
+        "Recover lost files",
+        "Manage passwords"
+      ],
+      "correctAnswerIndex": 1,
+      "answerFeedback": "Antivirus software protects against malware."
+    },
+    {
+      "questionText": "What is a common sign of a phishing email?",
+      "answers": [
+        "Spelling and grammar mistakes",
+        "An email from a trusted source",
+        "An email with no attachments",
+        "An email that does not ask for personal information"
+      ],
+      "correctAnswerIndex": 0,
+      "answerFeedback": "Phishing emails often have spelling and grammar mistakes."
+    },
+    {
+      "questionText": "What should you do if you receive an email from an unknown source with an attachment?",
+      "answers": [
+        "Open the attachment",
+        "Reply to the email",
+        "Delete the email",
+        "Forward the email to your contacts"
+      ],
+      "correctAnswerIndex": 2,
+      "answerFeedback": "Delete suspicious emails."
+    },
+    {
+      "questionText": "What is the safest way to shop online?",
+      "answers": [
+        "Use public Wi-Fi",
+        "Use a credit card",
+        "Save your payment information for future purchases",
+        "Shop on unsecured websites"
+      ],
+      "correctAnswerIndex": 1,
+      "answerFeedback": "Using a credit card is generally safer."
+    },
+    {
+      "questionText": "What is the purpose of a VPN?",
+      "answers": [
+        "Increase internet speed",
+        "Encrypt your internet connection",
+        "Recover lost files",
+        "Share files"
+      ],
+      "correctAnswerIndex": 1,
+      "answerFeedback": "A VPN encrypts your internet connection."
+    },
+    {
+      "questionText": "What is the best way to protect sensitive information online?",
+      "answers": [
+        "Use strong, unique passwords",
+        "Share your passwords with trusted friends",
+        "Use the same password for all accounts",
+        "Write down your passwords"
+      ],
+      "correctAnswerIndex": 0,
+      "answerFeedback": "Use strong, unique passwords."
+    },
+    {
+      "questionText": "What is the primary purpose of data encryption?",
+      "answers": [
+        "Increase data size",
+        "Decrease data size",
+        "Protect data from unauthorized access",
+        "Make data easier to read"
+      ],
+      "correctAnswerIndex": 2,
+      "answerFeedback": "Encryption protects data."
+    },
+    {
+      "questionText": "What is a common method used in social engineering attacks?",
+      "answers": [
+        "Brute force attacks",
+        "Manipulating people into giving out personal information",
+        "Writing secure code",
+        "Installing antivirus software"
+      ],
+      "correctAnswerIndex": 1,
+      "answerFeedback": "Social engineering often involves manipulation."
+    },
+    {
+      "questionText": "What is the most secure way to dispose of old computers?",
+      "answers": [
+        "Throw them in the trash",
+        "Sell them at a garage sale",
+        "Donate them to a school",
+        "Wipe the hard drive and responsibly recycle the hardware"
+      ],
+      "correctAnswerIndex": 3,
+      "answerFeedback": "Wipe and recycle old computers."
+    },
+    {
+      "questionText": "What is the best way to secure a Wi-Fi network?",
+      "answers": [
+        "Leave it open to the public",
+        "Use a strong password",
+        "Share the password with neighbors",
+        "Use your address as the password"
+      ],
+      "correctAnswerIndex": 1,
+      "answerFeedback": "Use a strong password for Wi-Fi."
+    },
+    {
+      "questionText": "What is the purpose of a digital signature?",
+      "answers": [
+        "Increase the size of a document",
+        "Verify the authenticity of a document",
+        "Encrypt a document",
+        "Decrease the size of a document"
+      ],
+      "correctAnswerIndex": 1,
+      "answerFeedback": "Digital signatures verify authenticity."
+    },
+    {
+      "questionText": "What is the primary purpose of a spam filter?",
+      "answers": [
+        "Block unwanted emails",
+        "Increase the number of emails you receive",
+        "Organize your emails",
+        "Delete all your emails"
+      ],
+      "correctAnswerIndex": 0,
+      "answerFeedback": "Spam filters block unwanted emails."
+    },
+    {
+      "questionText": "What is the best way to protect your personal information online?",
+      "answers": [
+        "Share it only with trusted websites",
+        "Post it on social media",
+        "Use it as your password",
+        "Share it in an email"
+      ],
+      "correctAnswerIndex": 0,
+      "answerFeedback": "Share personal info only with trusted sites."
+    },
+    {
+      "questionText": "What is a common sign of a scam email?",
+      "answers": [
+        "The email is from a trusted source",
+        "The email does not ask for personal information",
+        "The email contains threats or is designed to induce panic",
+        "The email contains no links"
+      ],
+      "correctAnswerIndex": 2,
+      "answerFeedback": "Scam emails often contain threats."
+    },
+    {
+      "questionText": "What is the best way to keep your computer secure?",
+      "answers": [
+        "Never update it",
+        "Click on all pop-up ads",
+        "Regularly install updates",
+        "Use a simple password"
+      ],
+      "correctAnswerIndex": 2,
+      "answerFeedback": "Regularly install updates."
+    },
+    {
+      "questionText": "What is the best way to prevent unauthorized access to your accounts?",
+      "answers": [
+        "Use the same password for all accounts",
+        "Share your passwords with friends",
+        "Use two-factor authentication",
+        "Write down your passwords"
+      ],
+      "correctAnswerIndex": 2,
+      "answerFeedback": "Use two-factor authentication."
+    },
+    {
+      "questionText": "What is the best way to protect sensitive data on your computer?",
+      "answers": [
+        "Leave it on your desktop",
+        "Store it in an unencrypted file",
+        "Encrypt the data",
+        "Share it with friends"
+      ],
+      "correctAnswerIndex": 2,
+      "answerFeedback": "Encrypt sensitive data."
+    },
+    {
+      "questionText": "What is the best way to avoid phishing attacks?",
+      "answers": [
+        "Click on all links in emails",
+        "Provide personal information when asked",
+        "Verify the source before providing sensitive information",
+        "Open all email attachments"
+      ],
+      "correctAnswerIndex": 2,
+      "answerFeedback": "Verify the source first."
+    },
+    {
+      "questionText": "What is the best way to secure your online accounts?",
+      "answers": [
+        "Use a simple password",
+        "Use the same password for all accounts",
+        "Share your passwords with friends",
+        "Use a unique, complex password for each account"
+      ],
+      "correctAnswerIndex": 3,
+      "answerFeedback": "Use unique, complex passwords."
+    },
+    {
+      "questionText": "What is the best way to protect your identity online?",
+      "answers": [
+        "Share personal information on social media",
+        "Use your real name for all accounts",
+        "Provide your address when asked",
+        "Limit the amount of personal information you share"
+      ],
+      "correctAnswerIndex": 3,
+      "answerFeedback": "Limit shared personal info."
+    },
+    {
+      "questionText": "What is the best way to avoid malware?",
+      "answers": [
+        "Click on all pop-up ads",
+        "Download software from untrusted sources",
+        "Open all email attachments",
+        "Keep your operating system and antivirus software up-to-date"
+      ],
+      "correctAnswerIndex": 3,
+      "answerFeedback": "Keep your system and antivirus updated."
+    },
+    {
+      "questionText": "What is the best way to avoid scams online?",
+      "answers": [
+        "Provide personal information when asked",
+        "Send money to people you don't know",
+        "Click on all links in emails",
+        "Verify the source before providing sensitive information"
+      ],
+      "correctAnswerIndex": 3,
+      "answerFeedback": "Verify the source first."
+    },
+  {
+    "questionText": "What is the best way to avoid scams online?",
+    "answers": [
+      "Provide personal information when asked",
+      "Send money to people you don't know",
+      "Click on all links in emails",
+      "Verify the source before providing sensitive information"
+    ],
+    "correctAnswerIndex": 3,
+    "answerFeedback": "Verify the source first."
+  },
+  {
+    "questionText": "What is the best way to protect your identity online?",
+    "answers": [
+      "Share personal information on social media",
+      "Use your real name for all accounts",
+      "Provide your address when asked",
+      "Limit the amount of personal information you share"
+    ],
+    "correctAnswerIndex": 3,
+    "answerFeedback": "Limit shared personal info."
+  },
+  {
+    "questionText": "What is the best way to avoid malware?",
+    "answers": [
+      "Click on all pop-up ads",
+      "Download software from untrusted sources",
+      "Open all email attachments",
+      "Keep your operating system and antivirus software up-to-date"
+    ],
+    "correctAnswerIndex": 3,
+    "answerFeedback": "Keep your system and antivirus updated."
+  },
+  {
+    "questionText": "What is the best way to avoid scams online?",
+    "answers": [
+      "Provide personal information when asked",
+      "Send money to people you don't know",
+      "Click on all links in emails",
+      "Verify the source before providing sensitive information"
+    ],
+    "correctAnswerIndex": 3,
+    "answerFeedback": "Verify the source first."
+  },
+  {
+    "questionText": "What is the best way to secure your online accounts?",
+    "answers": [
+      "Use a simple password",
+      "Use the same password for all accounts",
+      "Share your passwords with friends",
+      "Use a unique, complex password for each account"
+    ],
+    "correctAnswerIndex": 3,
+    "answerFeedback": "Use unique, complex passwords."
   }
+
 ]
