@@ -79,12 +79,14 @@ public class Authenticator extends AppCompatActivity {
         }
 
         String hashedPassword = hashPassword(password);
+        String hashedSaltedPassword = hashPassword(password + "KEY");
         userDatabase.put(username, hashedPassword);
         saveUserDatabase();
         showToast("Account created successfully.");
 
         try {
-            jsonEncoder.initializePastScores(username, hashedPassword);
+            jsonEncoder.initializePastScores(
+              username, hashedPassword, hashedSaltedPassword);
         } catch (IOException e) {
             showToast("Failed to initialize past scores.");
         }

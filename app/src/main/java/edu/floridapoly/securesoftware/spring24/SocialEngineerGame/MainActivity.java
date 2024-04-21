@@ -84,16 +84,19 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
+        String passwordHashSalted = hashPassword(password + "KEY");
+
         // Loading past scores using JsonEncoder
         try {
-            List<PastScore> scores = jsonEncoder.loadPastScores(username, storedHash);
+            List<PastScore> scores =
+              jsonEncoder.loadPastScores(username, storedHash, passwordHashSalted);
             // Proceed with using the scores as needed...
         } catch (Exception e) {
             Log.e("MainActivity", "Exception loading past scores", e);
             showToast("Failed to load past scores. " + e.toString());
         }
         // Saving user info in User class
-        User.saveUserInfo(username, storedHash);
+        User.saveUserInfo(username, storedHash, passwordHashSalted);
 
         Intent intent = new Intent(MainActivity.this, Game.class);
         startActivity(intent);

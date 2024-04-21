@@ -57,7 +57,10 @@ public class Profile extends AppCompatActivity {
         playerNameTextView.setText("Player: " + username);
 
         try {
-            List<PastScore> pastScores = new JsonEncoder().loadPastScores(username, User.getPasswordHash());
+            List<PastScore> pastScores =
+              new JsonEncoder().loadPastScores(username, User.getPasswordHash(),
+                User.getPasswordHashSalted()
+              );
             Collections.reverse(pastScores); // To display most recent at top
             displayPastScores(pastScores);
         } catch (IOException e) {
