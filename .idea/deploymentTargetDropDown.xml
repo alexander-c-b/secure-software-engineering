@@ -2,6 +2,12 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="JsonEncoderUnitTest">
+        <State />
+      </entry>
+      <entry key="Tests in 'edu.floridapoly.securesoftware.spring24.SocialEngineerGame'">
+        <State />
+      </entry>
       <entry key="app">
         <State />
       </entry>

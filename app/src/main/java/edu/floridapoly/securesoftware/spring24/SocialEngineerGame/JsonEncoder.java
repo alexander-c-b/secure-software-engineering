@@ -51,18 +51,19 @@ public class JsonEncoder {
         return jsonAdapter.fromJson(data);
     }
 
-    public List<PastScore> loadPastScores(String username, String passwordHash) throws IOException {
-        String key = passwordHash + "KEY";
+    public List<PastScore> loadPastScores(
+      String username, String passwordHash, String passwordHashSalted
+    ) throws IOException {
         String filename = getFilename(username, passwordHash);
         File file = new File(context.getFilesDir(), filename);
         if (!file.exists()) {
             Log.e("JsonEncoder", "File does not exist: " + filename);
-            return new ArrayList<>(); // Return an empty list or handle this case appropriately
-        }
-        else {
+            return new ArrayList<>(); // Return an empty list or handle this case
+            // appropriately
+        } else {
             Log.d("FileAccess", "File exists and ready to be used: " + filename);
         }
-        String data = new Encryptor(context).decrypt(filename, key);
+        String data = new Encryptor(context).decrypt(filename, passwordHashSalted);
         Moshi moshi = new Moshi.Builder().build();
         Type type = Types.newParameterizedType(List.class, PastScore.class);
         JsonAdapter<List<PastScore>> jsonAdapter = moshi.adapter(type);
@@ -73,7 +74,7 @@ public class JsonEncoder {
         // Sanitize both username and passwordHash to ensure filename is valid
         String safeUsername = sanitizeFilename(username);
         String safePasswordHash = sanitizeFilename(passwordHash);
-        return safeUsername + "." + safePasswordHash + ".json";
+        return safeUsername + "." + safePasswordHash + ".encrypted";
     }
 
     // Make sure file has a valid name
@@ -81,8 +82,10 @@ public class JsonEncoder {
         return filename.replaceAll("[^A-Za-z0-9]", "_");
     }
 
-    public void savePastScores(List<PastScore> pastScores, String username, String passwordHash) throws IOException {
-        String key = passwordHash + "KEY";
+    public void savePastScores(
+      List<PastScore> pastScores, String username, String passwordHash,
+      String passwordHashSalted
+    ) throws IOException {
         String filename = getFilename(username, passwordHash);
         Moshi moshi = new Moshi.Builder().build();
         Type type = Types.newParameterizedType(List.class, PastScore.class);
@@ -90,19 +93,23 @@ public class JsonEncoder {
         String data = jsonAdapter.toJson(pastScores);
         Log.d("JsonEncoder", "Saving data to: " + filename);
         Log.d("JsonEncoder", "Saved past score: " + pastScores);
-        new Encryptor(context).encrypt(data, key, filename);
+        new Encryptor(context).encrypt(data, passwordHashSalted, filename);
     }
 
 
-    public void savePastScore(PastScore pastScore, String username, String passwordHash)
-      throws IOException {
-        List<PastScore> pastScores = loadPastScores(username, passwordHash);
+    public void savePastScore(
+      PastScore pastScore, String username, String passwordHash,
+      String passwordHashSalted
+    ) throws IOException {
+        List<PastScore> pastScores =
+          loadPastScores(username, passwordHash, passwordHashSalted);
         pastScores.add(pastScore);
-        savePastScores(pastScores, username, passwordHash);
+        savePastScores(pastScores, username, passwordHash, passwordHashSalted);
     }
 
-    public void initializePastScores(String username, String passwordHash)
-      throws IOException {
-        savePastScores(new ArrayList<>(), username, passwordHash);
+    public void initializePastScores(
+      String username, String passwordHash, String passwordHashSalted
+    ) throws IOException {
+        savePastScores(new ArrayList<>(), username, passwordHash, passwordHashSalted);
     }
 }

@@ -53,7 +53,10 @@ public class GameRoundControl {
         // Call savePastScores() here to save the score
         try {
             JsonEncoder jsonEncoder = new JsonEncoder(App.getContext()); // App.getContext() needs to be your actual context getter method
-            jsonEncoder.savePastScore(score, User.getUsername(), User.getPasswordHash());
+            jsonEncoder.savePastScore(
+              score, User.getUsername(), User.getPasswordHash(),
+              User.getPasswordHashSalted()
+            );
             Log.d("Game", "Final Score: " + score.correctAnswers + "/" + score.totalQuestions);
 
         } catch (IOException e) {
