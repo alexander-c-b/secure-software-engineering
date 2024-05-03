@@ -38,7 +38,9 @@ public class GameRoundControl {
             correctAnswersSoFar++;
             feedback = "Correct! " + currentQuestion.answerFeedback;
         } else {
-            feedback = "Incorrect. " + currentQuestion.answerFeedback;
+            // Provide the correct answer in the feedback
+            String correctAnswer = currentQuestion.getCorrectAnswer();
+            feedback = "Incorrect. The correct answer is: " + correctAnswer;
         }
         // Now it's safe to set currentQuestion to null because we're done using it
         currentQuestion = null;
